@@ -1,4 +1,5 @@
-from flask import Flask, url_for
+
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -20,10 +21,25 @@ def promote():
     return '</br>'.join(sentences)
 
 
-@app.route('/image_mars')
+@app.route('/promotion_image')
 def image():
-    return '''<h1>Жди нас, Марс!</h1>'
-            <img src="static/img.png" alt="картинки нет">'''
+    return '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Жди нас, Марс!</h1>'
+    <img src="static/img.png" alt="картинки нет">
+    <p class="bg-primary text-white p-3">Человечество вырастает из дерева.</p>
+    <p class="bg-success text-white p-3">Человечеству мала одна планета.</p>
+    <p class="bg-danger text-white p-3">Мы сделаем обитаемыми безжизненные пока планеты.</p>
+    <p class="bg-warning text-dark p-3">И начнем с Марса!</p>
+    <p class="bg-info text-white p-3">Присоединяйся к СВОим!</p>
+</body>
+</html>
+    '''
 
 
 if __name__ == '__main__':
