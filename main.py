@@ -5,7 +5,7 @@ import io
 app = Flask(__name__)
 
 
-@app.route('/sample_file_upload', methods=['POST', 'GET'])
+@app.route('/load_photo', methods=['POST', 'GET'])
 def sample_file_upload():
     if request.method == 'GET':
         return f'''<!doctype html>
