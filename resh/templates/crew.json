@@ -1,0 +1,5 @@
+[
+  {"name": "jamal", "surname": "no", "photo": "jamal.jpg", "jobs": ["Профессиональный мойщик окон", "Сборщик бананов"]},
+  {"name": "Artyom", "surname": "Achkasov", "photo": "vasya.png", "jobs": ["Фанерный генерал"]},
+  {"name": "Окабе", "surname": "Ринтаро", "photo": "okabe.png", "jobs": ["sad scientisto"]}
+]

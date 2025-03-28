@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+    {% set member = crew|random %}
+    <h1>{{ member["name"] }}
+    {{ member["surname"]}}</h1><br>
+    {% set image = member["photo"] %}
+    <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ image }}" width="250" height="250"><br>
+    <h1>{{ member["jobs"]|sort }}</h1>
+    </center>
+
+{% endblock %}
