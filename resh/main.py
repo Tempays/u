@@ -1,7 +1,4 @@
 from flask import Flask, request, make_response, render_template
-from data import db_session
-from data.department import Department
-from data.users import User
 from data.jobs import Jobs
 from data.db_session import global_init, create_session
 
