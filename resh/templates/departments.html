@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <button onclick="window.location.href='/'">
+        Вернуться к работам
+    </button>
+    {% if current_user.is_authenticated %}
+        <button onclick="window.location.href='/add_department'">
+            Добавить департамент
+        </button>
+    {% endif %}
+    <div>
+        <center>
+            <h1>Департаменты</h1>
+        </center>
+    </div>
+
+    {% for department in departments %}
+    <h2>Action #{{ department.id }}</h2>
+        <table class="mars-table">
+        <thead>
+            <tr>
+                <th>Title of department</th>
+                <th>Chief</th>
+                <th>Members</th>
+                <th>Department email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ department.title }}</td>
+                <td>{{ department.leader.surname }} {{ department.leader.name }}</td>
+                <td>{{ department.members }}</td>
+                <td>{{ department.email }}</td>
+            </tr>
+        </tbody>
+        </table>
+        {% if (current_user.id == department.leader.id) or (current_user.id == 1) %}
+            <button onclick="window.location.href='/change_department/{{ department.id }}'">
+            Изменить Департамент
+            </button>
+            <button onclick="window.location.href='/delete_department/{{ department.id }}'">
+            Удалить Департамент
+            </button>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
