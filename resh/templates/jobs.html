@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <div>
+        <center>
+            <h1>Works log</h1>
+        </center>
+    </div>
+    {% if current_user.is_authenticated %}
+        <button onclick="window.location.href='/add_job'">
+        Добавить работу
+        </button>
+    <button onclick="window.location.href='/departments'">
+        Перейти к департаментам
+    </button>
+    {% endif %}
+    {% for job in jobs %}
+    <h2>Action #{{ job.id }}</h2>
+        <table class="mars-table">
+        <thead>
+            <tr>
+                <th>Title of activity</th>
+                <th>Team leader</th>
+                <th>Duration</th>
+                <th>List of collaborators</th>
+                <th>Hazard level</th>
+                <th>Is finished</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ job.job }}</td>
+                <td>{{ job.leader.surname }} {{ job.leader.name }}</td>
+                <td>{{ job.work_size }}</td>
+                <td>{{ job.collaborators }}</td>
+                <td> job.categories.name </td>
+                {% if job.is_finished %}
+                    <td> is finished </td>
+                {% else %}
+                    <td> is not finished </td>
+                {% endif %}
+            </tr>
+        </tbody>
+        </table>
+        {% if (current_user.id == job.leader.id) or (current_user.id == 1) %}
+            <button onclick="window.location.href='/change_job/{{ job.id }}'">
+            Изменить Работу
+            </button>
+            <button onclick="window.location.href='/delete_job/{{ job.id }}'">
+            Удалить Работу
+            </button>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
