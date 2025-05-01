@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1>Nostalgy</h1>
-<h1>{{ name }} {{ surname }}</h1>
-<h3>Hometown {{ city_from }}</h3>
-<img src="{{ url_for('static', filename='images/{{ user_id }}map.png')}}" width="500">
-{% endblock %}
